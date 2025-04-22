@@ -89,10 +89,27 @@
 //    }
 
 //}
+//string[] name = {};
+//Console.WriteLine(name.FirstOrDefault());
 
-int[] numbers = { 1, 2, 3, 4, 5 };
-Console.WriteLine(numbers.Count());
-Console.WriteLine(numbers.FirstOrDefault());
+//int[] numbers = { 9, 5, 4, 6, 7, 1, 2, 3, 4, 5 };
+//var list = numbers.Where(x => x % 2 == 0);
+//foreach (var even in list)
+//{
+//    Console.WriteLine(even);
+//}
+//var squares = numbers.Select(x => x * x);
+//foreach (var square in squares)
+//{
+//    Console.WriteLine(square);
+//}
+//Console.WriteLine(numbers.Count());
+//Console.WriteLine(numbers.FirstOrDefault());
+//Console.WriteLine(numbers.Sum());
+//Console.WriteLine(numbers.Average());
+//Console.WriteLine(numbers.Max());
+//Console.WriteLine(numbers.Min());
+//Console.WriteLine(numbers.Order());
 //foreach (int number in numbers)
 //{
 //    if (number % 2 == 0)
@@ -107,6 +124,13 @@ Console.WriteLine(numbers.FirstOrDefault());
 //{ 
 //    Console.WriteLine(number); 
 //}
+
+//double value1 = 12345.444444;
+//Console.WriteLine(value1.ToString("N3"));
+//Console.WriteLine(value1.ToString("E"));
+//Console.WriteLine(value1.ToString("F"));
+//Console.WriteLine(value1.ToString("P"));
+//Console.WriteLine(value1.ToString("C"));
 //Employee employee1 = new Employee();
 //employee1.Speaking();
 //public class Human
@@ -125,34 +149,68 @@ Console.WriteLine(numbers.FirstOrDefault());
 //Add add = new Add();
 //var result = add.Result(1, 2);
 //Console.WriteLine(result);
-//Console.WriteLine(add.Result(2.2,4.4));
+//Console.WriteLine(add.Result(2.2, 4.4));
 //public class Add
 //{
-  
-//    public int Result(int x,int y)
-//    { return x + y; }   
-//    public double Result(double x , double y)
+
+//    public int Result(int x, int y)
+//    { return x + y; }
+//    public double Result(double x, double y)
 //    {
-//        return x + y;   
+//        return x + y;
 //    }
 //}
 
-Dog dog = new Dog();
-dog.Speak();
-Animal animal = new Animal();
-animal.Speak(); 
-public class Animal
-{
-    public virtual void Speak()
-    {
-        Console.WriteLine("The animal is speaking");
-    }
-}
+//Dog dog = new Dog();
+//dog.Speak();
+//Animal animal = new Animal();
+//animal.Speak(); 
+//public class Animal
+//{
+//    public virtual void Speak()
+//    {
+//        Console.WriteLine("The animal is speaking");
+//    }
+//}
 
-public class Dog : Animal
-{
-    public override void Speak()
-    {
-        Console.WriteLine("The dog is barking");
-    }
-}
+//public class Dog : Animal
+//{
+//    public override void Speak()
+//    {
+//        Console.WriteLine("The dog is barking");
+//    }
+//}
+
+//public interface Features
+//{
+//    public void create();
+//    public void update();   
+//    public void delete();
+//    public void read();
+
+//}
+
+//public class Kapay : Features
+//{
+//    public void create()
+//    {
+//        throw new NotImplementedException();
+//    }
+
+//    public void delete()
+//    {
+//        throw new NotImplementedException();
+//    }
+
+//    public void read()
+//    {
+//        throw new NotImplementedException();
+//    }
+
+//    public void update()
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
+
+
