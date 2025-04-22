@@ -1,4 +1,5 @@
-﻿Console.WriteLine("Hello World");
+﻿
+Console.WriteLine("Hello World");
 
 //string letter = "C";
 
@@ -187,7 +188,6 @@
 //    public void update();   
 //    public void delete();
 //    public void read();
-
 //}
 
 //public class Kapay : Features
@@ -213,4 +213,54 @@
 //    }
 //}
 
+//int num1 = 10;
+//int num2 = 0; 
 
+//try
+//{
+//    var result = num1 / num2; 
+//}
+//catch(DivideByZeroException ex)
+//{
+//    Console.WriteLine("can't be divided with zero");
+//}
+//finally
+//{
+//    Console.WriteLine("Try Again");
+//}
+
+//int[] numbers = { 1, 2, 4, 5 };
+//try
+//{
+//    int index = 5;
+//    var num = numbers[index];
+
+//}
+//catch (IndexOutOfRangeException ex)
+//{ 
+//    Console.WriteLine($"An erroe occur: {ex.Message}");
+//}
+//finally
+//{
+//    Console.WriteLine("The block had been run");
+//}
+
+try
+{
+    CheckAge(0);
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"An erroe occur : {ex.Message}");
+}
+finally
+{
+    Console.WriteLine("thank you");
+}
+static void CheckAge (int age)
+{
+    if (age < 18)
+    {
+        throw new ArgumentException("Age must be over 18");
+    }
+}
