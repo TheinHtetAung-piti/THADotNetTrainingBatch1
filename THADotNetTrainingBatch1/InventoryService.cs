@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,8 @@ namespace THADotNetTrainingBatch1
                 Console.WriteLine("Something went Wrong! Try Again!");
                 goto beforeEnterQuantity;
             }
-
+            //int no = Data.Products.Max(x => x.Id);
+            //Data.ProductId = no;
             Data.ProductId++;
             string productCode = "P" + Data.ProductId.ToString().PadLeft(3, '0'); // change into string and zero fill 
 
@@ -91,8 +93,29 @@ namespace THADotNetTrainingBatch1
                 Console.WriteLine("Something went wrog !");
                 goto beforeProductCode;
             }
-            Data.Products.Remove(product);
-            Console.WriteLine("Delete Successfully");
+        beforeCommand:
+            Console.Write($"sure to delete {product.Code} , {product.Name} (Y/N) : ");
+            string comfirm = Console.ReadLine()!;
+            if (comfirm is null)
+            {
+                Console.WriteLine("Select the correct command");
+                goto beforeCommand;
+            }
+            else if(comfirm.ToUpper() == "Y")
+            {
+                Data.Products.Remove(product);
+                Console.WriteLine("Delete Successfully");
+            }
+            else if (comfirm.ToUpper() == "N")
+            {
+                Console.WriteLine("Data is not delete!");
+            }
+            else
+            {
+                Console.WriteLine("Select the correct command");
+                goto beforeCommand;
+            }
+
         }
     }
 }
