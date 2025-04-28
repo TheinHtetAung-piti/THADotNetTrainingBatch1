@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1", "THADotNetTrainingBatch1\THADotNetTrainingBatch1.csproj", "{B1F3ACA4-06D3-481D-A0DE-6109EF76BAAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{F3E6557B-86A1-4381-A7D5-2A2C95868759}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B1F3ACA4-06D3-481D-A0DE-6109EF76BAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1F3ACA4-06D3-481D-A0DE-6109EF76BAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1F3ACA4-06D3-481D-A0DE-6109EF76BAAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
