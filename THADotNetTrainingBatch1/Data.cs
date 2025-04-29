@@ -8,6 +8,7 @@ namespace THADotNetTrainingBatch1
 {
     internal class Data
     {
+        
         public static List<Product> Products = new List<Product>()
         {
             new Product(1, "P001" , "Apple" , 3000 , 100 , "Fruit"),

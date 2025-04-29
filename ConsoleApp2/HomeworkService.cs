@@ -19,7 +19,7 @@ namespace ConsoleApp2
             TrustServerCertificate = true
         };
         public void ReadDetail(int no)
-        {      
+        {   
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             string qurey = $"select * from Tbl_Homewrok where No = {no}";
@@ -30,10 +30,10 @@ namespace ConsoleApp2
             connection.Close();
         }
         public void Read()
-        {
+        {   
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
-            string qurey = "select * from Tbl_Homewrok";
+            string qurey = "select * from Tbl_Homework";
             SqlCommand cmd = new SqlCommand(qurey, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

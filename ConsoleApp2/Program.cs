@@ -12,4 +12,4 @@ Console.WriteLine("Hello, World!");
 //sqlConnectionStringBuilder.Password = "sa@123";
 //sqlConnectionStringBuilder.TrustServerCertificate = true;
 HomeworkService homewrokService = new HomeworkService();
-homewrokService.ReadDetail(1);
+homewrokService.Read();

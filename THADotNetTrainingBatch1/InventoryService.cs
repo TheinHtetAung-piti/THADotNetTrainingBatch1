@@ -10,7 +10,7 @@ namespace THADotNetTrainingBatch1
     internal class InventoryService
     {
         public void CreateProduct()
-        {
+        {   
             Console.Write("Input the product name : ");
             string productName = Console.ReadLine()!; // not null ? ဆိုရင် null လည်းဖြစ်နိုင်တယ်
 
@@ -33,8 +33,10 @@ namespace THADotNetTrainingBatch1
                 Console.WriteLine("Something went Wrong! Try Again!");
                 goto beforeEnterQuantity;
             }
+
             //int no = Data.Products.Max(x => x.Id);
             //Data.ProductId = no;
+
             Data.ProductId++;
             string productCode = "P" + Data.ProductId.ToString().PadLeft(3, '0'); // change into string and zero fill 
 
@@ -44,7 +46,7 @@ namespace THADotNetTrainingBatch1
         }
 
         public void ViewProduct()
-        {
+        {   
             foreach (var product in Data.Products)
             {
                 Console.WriteLine($"Id : {product.Id} , Code : {product.Code} , Name : {product.Name} , Price : {product.Price} , Quantity : {product.Quantity} , Category : {product.Category}");
