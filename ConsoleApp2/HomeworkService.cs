@@ -233,7 +233,7 @@ and Password = @Password ";
                 command.Parameters.AddWithValue("@No", no);
                 int result = command.ExecuteNonQuery();
                 connection1.Close();
-
+1
             }
             else if (comfirm.ToUpper() == "N")
             {

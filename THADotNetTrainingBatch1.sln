@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{F3E6557B-86A1-4381-A7D5-2A2C95868759}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.WinFormsApp", "THADotNetTrainingBatch1.WinFormsApp\THADotNetTrainingBatch1.WinFormsApp.csproj", "{6D440797-0EAB-4F90-A7C6-3E3D3348D703}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3E6557B-86A1-4381-A7D5-2A2C95868759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D440797-0EAB-4F90-A7C6-3E3D3348D703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D440797-0EAB-4F90-A7C6-3E3D3348D703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D440797-0EAB-4F90-A7C6-3E3D3348D703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D440797-0EAB-4F90-A7C6-3E3D3348D703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
