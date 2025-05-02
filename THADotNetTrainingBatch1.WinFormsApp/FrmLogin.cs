@@ -21,7 +21,7 @@ namespace THADotNetTrainingBatch1.WinFormsApp
         {
             string userName = textUername.Text.Trim();
             string password = textPassword.Text.Trim();
-            string query = $"select * from Tbl_user where Name = @UserName and Password = @Password ";
+            string query = $"select * from Tbl_user where Name = {userName} and Password = {password} ";
             //List<SqlParameter> parameters = new List<SqlParameter>()
             //{
             //    new SqlParameter("@UserName", userName), 
@@ -29,29 +29,29 @@ namespace THADotNetTrainingBatch1.WinFormsApp
             //}
             //;
             //DataTable dt = _sqlService.Qurey(query, parameters);
-            DataTable dt = _sqlService.Qurey(query, new SqlParameter("@UserName", userName),
-                new SqlParameter("@Password", password));
-            //SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
-            //{
-            //    DataSource = ".",
-            //    InitialCatalog = "DotNetTrainingBatch1",
-            //    UserID = "sa",
-            //    Password = "sa@123",
-            //    TrustServerCertificate = true
-            //};
-            
-            //SqlConnection connection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
-            //connection.Open();
+            //DataTable dt = _sqlService.Qurey(query, new SqlParameter("@UserName", userName),
+            //    new SqlParameter("@Password", password));
+            SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+            {
+                DataSource = ".",
+                InitialCatalog = "DotNetTrainingBatch1",
+                UserID = "sa",
+                Password = "sa@123",
+                TrustServerCertificate = true
+            };
 
-            //SqlCommand cmd = new SqlCommand( query , connection);
-            //cmd.Parameters.AddWithValue("@UserName" , userName );   
-            //cmd.Parameters.AddWithValue ("@Password" , password );
-            //DataTable dt = new DataTable();
-            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            //adapter.Fill(dt);
+            SqlConnection connection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+            connection.Open();
 
-            //connection.Close(); 
-            
+            SqlCommand cmd = new SqlCommand(query, connection);
+            //cmd.Parameters.AddWithValue("@UserName", userName);
+            //cmd.Parameters.AddWithValue("@Password", password);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            connection.Close();
+
             if (dt.Rows.Count == 0 )
             {
                 MessageBox.Show("User Doesn't exst.");
