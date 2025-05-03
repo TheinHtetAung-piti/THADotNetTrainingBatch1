@@ -31,7 +31,7 @@
             btnLogin = new Button();
             label1 = new Label();
             label2 = new Label();
-            textUername = new TextBox();
+            textUsername = new TextBox();
             textPassword = new TextBox();
             btlCancel = new Button();
             SuspendLayout();
@@ -72,14 +72,15 @@
             label2.TabIndex = 2;
             label2.Text = "Passwrod:";
             // 
-            // textUername
+            // textUsername
             // 
-            textUername.Location = new Point(99, 88);
-            textUername.Margin = new Padding(4);
-            textUername.Name = "textUername";
-            textUername.Size = new Size(379, 34);
-            textUername.TabIndex = 3;
-            textUername.TextChanged += textBox1_TextChanged;
+            textUsername.Location = new Point(99, 88);
+            textUsername.Margin = new Padding(4);
+            textUsername.Name = "textUsername";
+            textUsername.Size = new Size(379, 34);
+            textUsername.TabIndex = 3;
+            textUsername.TextChanged += textBox1_TextChanged;
+            textUsername.KeyDown += textUsername_KeyDown;
             // 
             // textPassword
             // 
@@ -90,6 +91,7 @@
             textPassword.TabIndex = 4;
             textPassword.UseSystemPasswordChar = true;
             textPassword.TextChanged += textBox2_TextChanged;
+            //textPassword.KeyDown += textPassword_KeyDown;
             // 
             // btlCancel
             // 
@@ -106,20 +108,20 @@
             btlCancel.UseVisualStyleBackColor = false;
             btlCancel.Click += btlCancel_Click;
             // 
-            // Form1
+            // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(571, 364);
             Controls.Add(btlCancel);
             Controls.Add(textPassword);
-            Controls.Add(textUername);
+            Controls.Add(textUsername);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnLogin);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
-            Name = "Form1";
+            Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
@@ -132,7 +134,7 @@
         private Button btnLogin;
         private Label label1;
         private Label label2;
-        private TextBox textUername;
+        private TextBox textUsername;
         private TextBox textPassword;
         private Button btlCancel;
     }
