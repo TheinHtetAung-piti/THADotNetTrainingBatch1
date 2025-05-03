@@ -91,7 +91,6 @@
             textPassword.TabIndex = 4;
             textPassword.UseSystemPasswordChar = true;
             textPassword.TextChanged += textBox2_TextChanged;
-            //textPassword.KeyDown += textPassword_KeyDown;
             // 
             // btlCancel
             // 
@@ -123,7 +122,7 @@
             Margin = new Padding(4);
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Login";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

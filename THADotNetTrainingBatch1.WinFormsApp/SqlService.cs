@@ -19,7 +19,7 @@ namespace THADotNetTrainingBatch1.WinFormsApp
             Password = "sa@123",
             TrustServerCertificate = true
         };
-        public DataTable Qurey(string query , List<SqlParameter> parameters)
+        public DataTable Query(string query , List<SqlParameter> parameters)
         {
             
             //string query = $"select * from Tbl_user where Name = @UserName and Password = @Password ";
@@ -38,7 +38,7 @@ namespace THADotNetTrainingBatch1.WinFormsApp
 
             return dt;
         }
-        public DataTable Qurey(string query,params SqlParameter[] parameters)
+        public DataTable Query(string query,params SqlParameter[] parameters)
         {
 
             //string query = $"select * from Tbl_user where Name = @UserName and Password = @Password ";

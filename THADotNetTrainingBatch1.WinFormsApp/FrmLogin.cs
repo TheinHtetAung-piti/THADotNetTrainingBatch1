@@ -29,7 +29,7 @@ namespace THADotNetTrainingBatch1.WinFormsApp
             //}
             //;
             //DataTable dt = _sqlService.Qurey(query, parameters);
-            DataTable dt = _sqlService.Qurey(query, new SqlParameter("@UserName", userName),
+            DataTable dt = _sqlService.Query(query, new SqlParameter("@UserName", userName),
                 new SqlParameter("@Password", password));
             //SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
             //{
@@ -57,8 +57,16 @@ namespace THADotNetTrainingBatch1.WinFormsApp
                 MessageBox.Show("User Doesn't exst.");
                 return;
             }
-
+            
             MessageBox.Show("Success!");
+            textUsername.Clear();
+            textPassword.Clear();   
+            this.Hide();
+            FrmMenu frm = new FrmMenu();
+            //frm.Show();
+            frm.ShowDialog();
+            this.Show();
+            textUsername.Focus();
 
         }
 
