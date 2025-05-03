@@ -17,8 +17,17 @@ namespace ConsoleApp2
         {
             _sqlServices = new sqlSevices();
         }
-        public void ReadDetail(int no)
+        public void ReadDetail()
         {
+        beforeNo:
+            Console.Write("Enter the no you wanna to see : ");
+            string inputNo = Console.ReadLine()!;
+            bool resultNo = int.TryParse(inputNo, out int no);
+            if (!resultNo)
+            {
+                Console.WriteLine("Invalid No");
+                goto beforeNo;
+            }
             string qurey = $"select * from Tbl_Homework where No = @No";
              DataTable dt = _sqlServices.Query(qurey, new SqlParameter("@No", no));
 
