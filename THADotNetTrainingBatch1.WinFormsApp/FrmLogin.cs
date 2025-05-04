@@ -59,6 +59,7 @@ namespace THADotNetTrainingBatch1.WinFormsApp
             }
             
             MessageBox.Show("Success!");
+            AppSetting.CurrentUser = Convert.ToInt32(dt.Rows[0]["Id"]); 
             textUsername.Clear();
             textPassword.Clear();   
             this.Hide();
