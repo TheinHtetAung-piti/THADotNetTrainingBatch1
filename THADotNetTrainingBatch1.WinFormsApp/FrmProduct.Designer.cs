@@ -52,6 +52,7 @@
             dgvData.RowHeadersWidth = 51;
             dgvData.Size = new Size(1100, 262);
             dgvData.TabIndex = 0;
+            dgvData.KeyPress += textPrice_KeyPress;
             // 
             // textProductCode
             // 
@@ -62,6 +63,7 @@
             textProductCode.Size = new Size(170, 34);
             textProductCode.TabIndex = 1;
             textProductCode.TextChanged += textBox1_TextChanged;
+            textProductCode.KeyDown += textProductCode_KeyDown;
             // 
             // textProductName
             // 
@@ -72,6 +74,7 @@
             textProductName.Size = new Size(170, 34);
             textProductName.TabIndex = 2;
             textProductName.TextChanged += textProductName_TextChanged;
+            textProductName.KeyDown += textProductName_KeyDown;
             // 
             // textPrice
             // 
@@ -82,6 +85,7 @@
             textPrice.Size = new Size(170, 34);
             textPrice.TabIndex = 3;
             textPrice.TextChanged += textPrice_TextChanged;
+            textPrice.KeyDown += textPrice_KeyDown;
             textPrice.KeyPress += textPrice_KeyPress;
             // 
             // textQuantity
@@ -93,6 +97,8 @@
             textQuantity.Size = new Size(170, 34);
             textQuantity.TabIndex = 4;
             textQuantity.TextChanged += textBox4_TextChanged;
+            textQuantity.KeyDown += textQuantity_KeyDown;
+            textQuantity.KeyPress += textPrice_KeyPress;
             // 
             // label1
             // 
@@ -182,6 +188,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmProduct";
             Load += FrmProduct_Load;
+            KeyPress += textPrice_KeyPress;
             ((System.ComponentModel.ISupportInitialize)dgvData).EndInit();
             ResumeLayout(false);
             PerformLayout();

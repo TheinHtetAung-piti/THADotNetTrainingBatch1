@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 using THADotNetTrainingBatch1.WinFormsApp.Queries;
 
 namespace THADotNetTrainingBatch1.WinFormsApp
@@ -28,6 +29,11 @@ namespace THADotNetTrainingBatch1.WinFormsApp
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        private void BindData()
         {
             DataTable dt = _sqlService.Query(ProductQuery.GetAllProduct);
             dgvData.DataSource = dt;
@@ -59,11 +65,31 @@ namespace THADotNetTrainingBatch1.WinFormsApp
             string name = textProductName.Text.Trim();
             decimal price = Convert.ToDecimal(textPrice.Text.Trim());
             int quantity = Convert.ToInt32(textQuantity.Text.Trim());
+
+            int result = _sqlService.Execute(ProductQuery.InsertProduct,
+                new SqlParameter("@ProductCode", code),
+                new SqlParameter("@ProductName", name),
+                new SqlParameter("@Price", price),
+                new SqlParameter("@Quantity", quantity),
+                new SqlParameter("@CreatedDateTime", DateTime.Now),
+                new SqlParameter("@CreatedBy", AppSetting.CurrentUser)
+                );
+
+            string message = result != 0 ? "Create Successful" : "Fail to create";
+            MessageBox.Show(message,"Inventory Control System",MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            BindData();
+
+
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
         {
-
+            textProductCode.Clear();
+            textProductName.Clear();
+            textPrice.Clear();
+            textQuantity.Clear();
+            textProductCode.Focus();
         }
 
         private void textProductName_TextChanged(object sender, EventArgs e)
@@ -78,9 +104,41 @@ namespace THADotNetTrainingBatch1.WinFormsApp
 
         private void textPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-           if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void textProductCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textProductName.Focus();
+            }
+        }
+
+        private void textProductName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textPrice.Focus();
+            }
+        }
+
+        private void textPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textQuantity.Focus();
+            }
+        }
+
+        private void textQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btn_Save_Click(sender, e);
             }
         }
     }

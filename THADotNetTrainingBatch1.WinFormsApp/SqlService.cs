@@ -57,5 +57,16 @@ namespace THADotNetTrainingBatch1.WinFormsApp
 
             return dt;
         }
+
+        public int Execute(string query , params SqlParameter[] parameters)
+        {
+            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ToString());  
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(query , connection);
+            cmd.Parameters.AddRange(parameters);
+            int result = cmd.ExecuteNonQuery(); 
+            connection.Close();
+            return result;
+        }
     }
 }
