@@ -20,6 +20,7 @@ namespace THADotNetTrainingBatch1.WinFormsApp
         public FrmProduct()
         {
             InitializeComponent();
+            dgvData.AutoGenerateColumns = false;
             _sqlService = new SqlService();
         }
 
@@ -78,18 +79,23 @@ namespace THADotNetTrainingBatch1.WinFormsApp
             string message = result != 0 ? "Create Successful" : "Fail to create";
             MessageBox.Show(message,"Inventory Control System",MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+            ControlClear();
             BindData();
 
 
         }
 
-        private void btn_Clear_Click(object sender, EventArgs e)
+        private void ControlClear()
         {
             textProductCode.Clear();
             textProductName.Clear();
             textPrice.Clear();
             textQuantity.Clear();
             textProductCode.Focus();
+        }
+        private void btn_Clear_Click(object sender, EventArgs e)
+        {
+            ControlClear();
         }
 
         private void textProductName_TextChanged(object sender, EventArgs e)

@@ -54,11 +54,17 @@ namespace THADotNetTrainingBatch1.WinFormsApp
 
             if (dt.Rows.Count == 0)
             {
-                MessageBox.Show("User Doesn't exst.");
+                MessageBox.Show("User Doesn't exst.",
+                    "Inventory Control System",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
             
-            MessageBox.Show("Success!");
+            MessageBox.Show("Success!","Inventory Control System",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
             AppSetting.CurrentUser = Convert.ToInt32(dt.Rows[0]["Id"]); 
             textUsername.Clear();
             textPassword.Clear();   

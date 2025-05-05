@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             dgvData = new DataGridView();
+            colProductCode = new DataGridViewTextBoxColumn();
+            colProductName = new DataGridViewTextBoxColumn();
             textProductCode = new TextBox();
             textProductName = new TextBox();
             textPrice = new TextBox();
@@ -44,15 +46,37 @@
             // 
             // dgvData
             // 
+            dgvData.AllowUserToAddRows = false;
+            dgvData.AllowUserToDeleteRows = false;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvData.Columns.AddRange(new DataGridViewColumn[] { colProductCode, colProductName });
             dgvData.Dock = DockStyle.Bottom;
             dgvData.Location = new Point(0, 368);
             dgvData.Margin = new Padding(4);
             dgvData.Name = "dgvData";
+            dgvData.ReadOnly = true;
             dgvData.RowHeadersWidth = 51;
             dgvData.Size = new Size(1100, 262);
             dgvData.TabIndex = 0;
             dgvData.KeyPress += textPrice_KeyPress;
+            // 
+            // colProductCode
+            // 
+            colProductCode.DataPropertyName = "ProductCode";
+            colProductCode.HeaderText = "Product Code";
+            colProductCode.MinimumWidth = 6;
+            colProductCode.Name = "colProductCode";
+            colProductCode.ReadOnly = true;
+            colProductCode.Width = 125;
+            // 
+            // colProductName
+            // 
+            colProductName.DataPropertyName = "ProductName";
+            colProductName.HeaderText = "ProductName";
+            colProductName.MinimumWidth = 6;
+            colProductName.Name = "colProductName";
+            colProductName.ReadOnly = true;
+            colProductName.Width = 125;
             // 
             // textProductCode
             // 
@@ -148,22 +172,26 @@
             // 
             // btn_Save
             // 
+            btn_Save.BackColor = Color.FromArgb(56, 142, 60);
+            btn_Save.ForeColor = Color.White;
             btn_Save.Location = new Point(430, 282);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(123, 44);
             btn_Save.TabIndex = 10;
             btn_Save.Text = "&Save";
-            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.UseVisualStyleBackColor = false;
             btn_Save.Click += btn_Save_Click;
             // 
             // btn_Clear
             // 
+            btn_Clear.BackColor = Color.FromArgb(69, 90, 100);
+            btn_Clear.ForeColor = Color.White;
             btn_Clear.Location = new Point(292, 282);
             btn_Clear.Name = "btn_Clear";
             btn_Clear.Size = new Size(123, 44);
             btn_Clear.TabIndex = 11;
             btn_Clear.Text = "&Clear";
-            btn_Clear.UseVisualStyleBackColor = true;
+            btn_Clear.UseVisualStyleBackColor = false;
             btn_Clear.Click += btn_Clear_Click;
             // 
             // FrmProduct
@@ -207,5 +235,7 @@
         private Label label4;
         private Button btn_Save;
         private Button btn_Clear;
+        private DataGridViewTextBoxColumn colProductCode;
+        private DataGridViewTextBoxColumn colProductName;
     }
 }
