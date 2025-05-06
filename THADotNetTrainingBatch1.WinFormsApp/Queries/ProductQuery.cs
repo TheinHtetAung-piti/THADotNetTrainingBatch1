@@ -13,7 +13,10 @@ ProductCode,
 ProductName,
 Category,
 Price, 
-Quantity, 
+Quantity,
+CreateDateTime,
+ModifiedBy,
+ModifiedDateTime,
 U.Name as CreatedBy 
 from Tbl_Product P 
 left join Tbl_User U on P.CreatedBy = U.Id
@@ -34,5 +37,17 @@ left join Tbl_Category PC on PC.Id = P.ProductCategory";
            ,@CreatedDateTime
            ,@CreatedBy
            )";
+
+        public static string UpdateProduct { get; } = @"UPDATE [dbo].[Tbl_Product]
+   SET [ProductCode] = @ProductCode
+      ,[ProductName] = @ProductName
+      ,[Price] = @Price
+      ,[Quantity] = @Quantity
+      ,[ModifiedDateTime] = @ModifiedDT
+      ,[ModifiedBy] = @CurrentUser
+ WHERE ProductId = @ProductId";
+
+        public static string DeleteProduct { get; } = @"DELETE FROM [dbo].[Tbl_Product]
+      WHERE ProductCode = @ProductCode";
     }
 }

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             dgvData = new DataGridView();
-            colProductCode = new DataGridViewTextBoxColumn();
-            colProductName = new DataGridViewTextBoxColumn();
             textProductCode = new TextBox();
             textProductName = new TextBox();
             textPrice = new TextBox();
@@ -41,6 +39,18 @@
             label4 = new Label();
             btn_Save = new Button();
             btn_Clear = new Button();
+            btnUpdate = new Button();
+            colEdit = new DataGridViewButtonColumn();
+            colDelete = new DataGridViewButtonColumn();
+            colProductId = new DataGridViewTextBoxColumn();
+            colProductCode = new DataGridViewTextBoxColumn();
+            colQuantity = new DataGridViewTextBoxColumn();
+            colProductName = new DataGridViewTextBoxColumn();
+            colPrice = new DataGridViewTextBoxColumn();
+            colCreatedDateTime = new DataGridViewTextBoxColumn();
+            colCreatedBy = new DataGridViewTextBoxColumn();
+            colModifiedDateTime = new DataGridViewTextBoxColumn();
+            colModifiedBy = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +59,7 @@
             dgvData.AllowUserToAddRows = false;
             dgvData.AllowUserToDeleteRows = false;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Columns.AddRange(new DataGridViewColumn[] { colProductCode, colProductName });
+            dgvData.Columns.AddRange(new DataGridViewColumn[] { colEdit, colDelete, colProductId, colProductCode, colQuantity, colProductName, colPrice, colCreatedDateTime, colCreatedBy, colModifiedDateTime, colModifiedBy });
             dgvData.Dock = DockStyle.Bottom;
             dgvData.Location = new Point(0, 368);
             dgvData.Margin = new Padding(4);
@@ -58,25 +68,8 @@
             dgvData.RowHeadersWidth = 51;
             dgvData.Size = new Size(1100, 262);
             dgvData.TabIndex = 0;
+            dgvData.CellContentClick += dgvData_CellContentClick;
             dgvData.KeyPress += textPrice_KeyPress;
-            // 
-            // colProductCode
-            // 
-            colProductCode.DataPropertyName = "ProductCode";
-            colProductCode.HeaderText = "Product Code";
-            colProductCode.MinimumWidth = 6;
-            colProductCode.Name = "colProductCode";
-            colProductCode.ReadOnly = true;
-            colProductCode.Width = 125;
-            // 
-            // colProductName
-            // 
-            colProductName.DataPropertyName = "ProductName";
-            colProductName.HeaderText = "ProductName";
-            colProductName.MinimumWidth = 6;
-            colProductName.Name = "colProductName";
-            colProductName.ReadOnly = true;
-            colProductName.Width = 125;
             // 
             // textProductCode
             // 
@@ -194,11 +187,126 @@
             btn_Clear.UseVisualStyleBackColor = false;
             btn_Clear.Click += btn_Clear_Click;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = Color.FromArgb(56, 142, 60);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.Location = new Point(430, 282);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(123, 44);
+            btnUpdate.TabIndex = 12;
+            btnUpdate.Text = "&Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Visible = false;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // colEdit
+            // 
+            colEdit.HeaderText = "Edit";
+            colEdit.MinimumWidth = 6;
+            colEdit.Name = "colEdit";
+            colEdit.ReadOnly = true;
+            colEdit.Text = "Edit";
+            colEdit.UseColumnTextForButtonValue = true;
+            colEdit.Width = 125;
+            // 
+            // colDelete
+            // 
+            colDelete.HeaderText = "Delete";
+            colDelete.MinimumWidth = 6;
+            colDelete.Name = "colDelete";
+            colDelete.ReadOnly = true;
+            colDelete.Text = "Delete";
+            colDelete.UseColumnTextForButtonValue = true;
+            colDelete.Width = 125;
+            // 
+            // colProductId
+            // 
+            colProductId.DataPropertyName = "ProductId";
+            colProductId.HeaderText = "ProductId";
+            colProductId.MinimumWidth = 6;
+            colProductId.Name = "colProductId";
+            colProductId.ReadOnly = true;
+            colProductId.Width = 125;
+            // 
+            // colProductCode
+            // 
+            colProductCode.DataPropertyName = "ProductCode";
+            colProductCode.HeaderText = "Product Code";
+            colProductCode.MinimumWidth = 6;
+            colProductCode.Name = "colProductCode";
+            colProductCode.ReadOnly = true;
+            colProductCode.Width = 125;
+            // 
+            // colQuantity
+            // 
+            colQuantity.DataPropertyName = "Quantity";
+            colQuantity.HeaderText = "Quantity";
+            colQuantity.MinimumWidth = 6;
+            colQuantity.Name = "colQuantity";
+            colQuantity.ReadOnly = true;
+            colQuantity.Width = 125;
+            // 
+            // colProductName
+            // 
+            colProductName.DataPropertyName = "ProductName";
+            colProductName.HeaderText = "ProductName";
+            colProductName.MinimumWidth = 6;
+            colProductName.Name = "colProductName";
+            colProductName.ReadOnly = true;
+            colProductName.Width = 125;
+            // 
+            // colPrice
+            // 
+            colPrice.DataPropertyName = "Price";
+            colPrice.HeaderText = "Price";
+            colPrice.MinimumWidth = 6;
+            colPrice.Name = "colPrice";
+            colPrice.ReadOnly = true;
+            colPrice.Width = 125;
+            // 
+            // colCreatedDateTime
+            // 
+            colCreatedDateTime.DataPropertyName = "CreateDateTime";
+            colCreatedDateTime.HeaderText = "CDT";
+            colCreatedDateTime.MinimumWidth = 6;
+            colCreatedDateTime.Name = "colCreatedDateTime";
+            colCreatedDateTime.ReadOnly = true;
+            colCreatedDateTime.Width = 125;
+            // 
+            // colCreatedBy
+            // 
+            colCreatedBy.DataPropertyName = "CreatedBy";
+            colCreatedBy.HeaderText = "CB";
+            colCreatedBy.MinimumWidth = 6;
+            colCreatedBy.Name = "colCreatedBy";
+            colCreatedBy.ReadOnly = true;
+            colCreatedBy.Width = 125;
+            // 
+            // colModifiedDateTime
+            // 
+            colModifiedDateTime.DataPropertyName = "ModifiedDateTime";
+            colModifiedDateTime.HeaderText = "MDT";
+            colModifiedDateTime.MinimumWidth = 6;
+            colModifiedDateTime.Name = "colModifiedDateTime";
+            colModifiedDateTime.ReadOnly = true;
+            colModifiedDateTime.Width = 125;
+            // 
+            // colModifiedBy
+            // 
+            colModifiedBy.DataPropertyName = "ModifiedBy";
+            colModifiedBy.HeaderText = "MB";
+            colModifiedBy.MinimumWidth = 6;
+            colModifiedBy.Name = "colModifiedBy";
+            colModifiedBy.ReadOnly = true;
+            colModifiedBy.Width = 125;
+            // 
             // FrmProduct
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 630);
+            Controls.Add(btnUpdate);
             Controls.Add(btn_Clear);
             Controls.Add(btn_Save);
             Controls.Add(label4);
@@ -235,7 +343,17 @@
         private Label label4;
         private Button btn_Save;
         private Button btn_Clear;
+        private Button btnUpdate;
+        private DataGridViewButtonColumn colEdit;
+        private DataGridViewButtonColumn colDelete;
+        private DataGridViewTextBoxColumn colProductId;
         private DataGridViewTextBoxColumn colProductCode;
+        private DataGridViewTextBoxColumn colQuantity;
         private DataGridViewTextBoxColumn colProductName;
+        private DataGridViewTextBoxColumn colPrice;
+        private DataGridViewTextBoxColumn colCreatedDateTime;
+        private DataGridViewTextBoxColumn colCreatedBy;
+        private DataGridViewTextBoxColumn colModifiedDateTime;
+        private DataGridViewTextBoxColumn colModifiedBy;
     }
 }
