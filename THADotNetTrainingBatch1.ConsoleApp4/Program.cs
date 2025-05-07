@@ -1,0 +1,38 @@
+﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.Data.SqlClient;
+using THADotNetTrainingBatch1.Shared;
+
+Console.WriteLine("Hello, World!");
+
+AdoDotNetService service = new AdoDotNetService(
+    new SqlConnectionStringBuilder
+    {
+        DataSource = ".",
+        InitialCatalog = "DotNetTrainingBatch1",
+        UserID = "sa",
+        Password = "sa@123",
+        TrustServerCertificate = true,
+    });
+var lst = service.QueryV2<Product>("SELECT * FROM Tbl_Product");
+foreach (var item in lst )
+{
+    Console.WriteLine(item.ProductName);
+}
+
+public class Product
+{
+    public int ProductID { get; set; }
+
+    public string ProductName { get; set; } 
+
+    public string ProductCode { get; set; }
+
+    public double Price { get; set; }   
+
+    public int Quantity { get; set; }   
+
+    public DateTime CreateDateTime { get; set; }
+}
+//service.Execute("Query", new SqlParameter("@Test", "Test"));
+//service.Query("Query");
+//Console.ReadLine();
