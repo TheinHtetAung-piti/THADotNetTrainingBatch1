@@ -6,19 +6,23 @@ using THADotNetTrainingBatch1.Shared;
 Console.WriteLine("Hello, World!");
 
 AppDbContext db = new AppDbContext();
-var lst = db.ProductCategories.ToList();
+//var lst = db.ProductCategories.ToList();
 
-foreach (var item in lst)
+//foreach (var item in lst)
+//{
+//    Console.WriteLine(item.CategoryName);
+//}
+var product = new ProductCategory
 {
-    Console.WriteLine(item.CategoryName);
-}
-
-db.ProductCategories.Add(new ProductCategory
-{
-    ProductCategoryId = 2,
-    ProductCategoryCode = "P002",
-    CategoryName = "Vegetable"
-});
+    ProductCategoryCode = "P003",
+    CategoryName = "test"
+};
+db.ProductCategories.Add(product);
+int result = db.SaveChanges();
+Console.WriteLine(result);
+// var item = db.ProductCategories.Where(x => x.ProductCategoryId == 1).FirstOrDefault();
+//Console.WriteLine(item.CategoryName);
+//Console.WriteLine("End");
 //AdoDotNetService service = new AdoDotNetService(
 //    new SqlConnectionStringBuilder
 //    {

@@ -28,11 +28,11 @@ namespace THADotNetTrainingBatch1.ConsoleApp4
         {
             if(!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server = , ;
+                optionsBuilder.UseSqlServer(@"Server = . ;
 Database = DotNetTrainingBatch1;
 User Id = sa ;
 Password = sa@123 ;
-TrustServerCertificate = ture ");
+TrustServerCertificate = true ");
             }
         }
         public DbSet<ProductCategory> ProductCategories { get; set; }
