@@ -1,0 +1,6 @@
+@THADotNetTrainingBatch1.WebApi_HostAddress = http://localhost:5085
+
+GET {{THADotNetTrainingBatch1.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
