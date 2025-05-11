@@ -10,4 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\THADotNetTrainingBatch1.Shared\THADotNetTrainingBatch1.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
