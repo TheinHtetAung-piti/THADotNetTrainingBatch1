@@ -1,3 +1,7 @@
+using Microsoft.Data.SqlClient;
+using THADotNetTrainingBatch1.Shared;
+using THADotNetTrainingBatch1.WebApi.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +11,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+//{
+//    DataSource = ".",
+//    InitialCatalog = "DotNetTrainingBatch1",
+//    UserID = "sa",
+//    Password = "sa@123",
+//    TrustServerCertificate = true,
+//};
+
+
+builder.Services.AddScoped<IDbV2Service,DapperService>();
+builder.Services.AddScoped<IProductService,ProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -8,21 +8,13 @@ namespace THADotNetTrainingBatch1.WebApi.Services
 
     // Request => Request Model
     // Response => Model
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly DapperService _dapperService;
+        private readonly IDbV2Service _dapperService;
 
-        public ProductService()
+        public ProductService(IDbV2Service dapperService)
         {
-            SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
-            {
-                DataSource = ".",
-                InitialCatalog = "DotNetTrainingBatch1",
-                UserID = "sa",
-                Password = "sa@123",
-                TrustServerCertificate = true,
-            };
-            _dapperService = new DapperService(sqlConnectionStringBuilder);
+            _dapperService = dapperService;
         }
 
         //List
@@ -102,7 +94,7 @@ namespace THADotNetTrainingBatch1.WebApi.Services
             return model;
         }
 
-        public ResponseModel UpdateProduct(int ProductId , ProductModel requestModel)
+        public ResponseModel UpdateProduct(int ProductId, ProductModel requestModel)
         {
             requestModel.ProductId = ProductId;
             string field = string.Empty;
@@ -154,7 +146,7 @@ namespace THADotNetTrainingBatch1.WebApi.Services
             return model;
         }
 
-        public ResponseModel DeleteProduct(int id )
+        public ResponseModel DeleteProduct(int id)
         {
             string query = "select * from Tbl_Product where ProductId = @ProductId";
             var lst = _dapperService.Query<ProductModel>(query,

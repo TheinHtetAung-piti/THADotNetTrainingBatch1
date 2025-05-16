@@ -1,16 +1,18 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.Data;
+using System.Data.Common;
 
 namespace THADotNetTrainingBatch1.Shared;
 
-public class DapperService
+public class DapperService : IDbV2Service
 {
-    private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
+    private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
 
-    public DapperService(SqlConnectionStringBuilder sqlConnectionBuilder)
+    public DapperService(IConfiguration configuration)
     {
-        _sqlConnectionStringBuilder = sqlConnectionBuilder;
+        _sqlConnectionStringBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString("DbConnection"));
     }
     public List<T> Query<T>(string query, object? parameters = null)
     {

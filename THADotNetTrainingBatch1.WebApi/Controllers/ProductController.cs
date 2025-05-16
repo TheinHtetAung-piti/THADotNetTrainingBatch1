@@ -12,12 +12,13 @@ namespace THADotNetTrainingBatch1.WebApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public ProductController()
-            {
-                _productService = new ProductService();
-            }
+        public ProductController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         [HttpGet]
         public IActionResult GetProduct()
         {
