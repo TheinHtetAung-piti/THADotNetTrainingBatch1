@@ -67,6 +67,14 @@ namespace THADotNetTrainingBatch1.WebApi.Services
 
         public ResponseModel CreareProduct(ProductModel requestModel)
         {
+            if (requestModel.ProductName.IsNullOrEmptyV2())
+            {
+                return new ResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Product Name is required"
+                };
+            }
             requestModel.CreateDateTime = DateTime.Now;
             requestModel.CreatedBy = 1;
             string query = @"INSERT INTO [dbo].[Tbl_Product]
