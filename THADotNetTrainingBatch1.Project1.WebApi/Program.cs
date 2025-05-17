@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using THADotNetTrainingBatch1.Project1.Database.Models;
+using THADotNetTrainingBatch1.Project1.Domain.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     string connectionString = builder.Configuration.GetConnectionString("DbConnection")!;
     opt.UseSqlServer(connectionString);
 });
+builder.Services.AddScoped<BlogService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
