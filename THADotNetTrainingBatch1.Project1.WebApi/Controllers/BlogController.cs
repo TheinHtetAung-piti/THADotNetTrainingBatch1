@@ -23,28 +23,25 @@ namespace THADotNetTrainingBatch1.Project1.WebApi.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{pageNo}{pageSize}")]
+        [HttpGet("{pageNo}/{pageSize}")]
         public IActionResult Get(int pageNo = 1, int pageSize = 10)
         {
-            var lst = _dbContext.TblBlogs
-                        .Skip((pageNo - 1) * pageSize)
-                        .Take(pageSize)
-                        .ToList();
-                return Ok(lst);
+           var model = _blogService.GetBlogs(pageNo, pageSize);
+            return Ok(model);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetBlog(int id)
         {
-          var 
+            var model = _blogService.GetBlog(id);
+            return Ok(model);
         }
 
         [HttpPost]
         public IActionResult CreateBlog([FromBody]TblBlog blog)
         {
-            _dbContext.TblBlogs.Add(blog);
-            _dbContext.SaveChanges();
-            return StatusCode(201, "Blog Created");
+           var model = _blogService.CreateBlog(blog);
+            return Ok(model);
         }
     }
 }

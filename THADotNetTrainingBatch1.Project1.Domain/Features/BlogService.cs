@@ -30,7 +30,7 @@ namespace THADotNetTrainingBatch1.Project1.Domain.Features
             
         }
         
-        public ResponseModel GetBLogs(int pageNo , int pageSize)
+        public ResponseModel GetBlogs(int pageNo , int pageSize)
         {
             try
             {
@@ -48,16 +48,34 @@ namespace THADotNetTrainingBatch1.Project1.Domain.Features
 
         }
 
+        public ResponseModel GetBlog(int id)
+        {
+            try
+            {
+                var lst = _dbContext.TblBlogs.FirstOrDefault(x => x.BlogId == id);
+                if (lst == null)
+                {
+                    return new ResponseModel(false, "Unsuccess");
+                }
+                return new ResponseModel(true, "Success", lst);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel(false, ex.ToString());
+            }
+        }
+
         public ResponseModel CreateBlog(TblBlog blog)
         {
             try
             {
-
+                _dbContext.TblBlogs .Add(blog);
+                _dbContext.SaveChanges();
+                return new ResponseModel(true, "Success");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return new ResponseModel(false, ex.ToString());
             }
         }
     }
