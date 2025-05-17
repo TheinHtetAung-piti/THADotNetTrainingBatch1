@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.Project1.Domain", "THADotNetTrainingBatch1.Project1.Domain\THADotNetTrainingBatch1.Project1.Domain.csproj", "{E711EA9D-F008-4E4E-AAA9-03F6403A61C1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project2", "Project2", "{681045CC-177A-41ED-BFAA-5DC1D5FB8566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.Project2.ConsoleApp", "THADotNetTrainingBatch1.Project2.ConsoleApp\THADotNetTrainingBatch1.Project2.ConsoleApp.csproj", "{AD1D23DD-92CB-4E97-9CE4-EC818B5EF115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,10 @@ Global
 		{E711EA9D-F008-4E4E-AAA9-03F6403A61C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E711EA9D-F008-4E4E-AAA9-03F6403A61C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E711EA9D-F008-4E4E-AAA9-03F6403A61C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1D23DD-92CB-4E97-9CE4-EC818B5EF115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1D23DD-92CB-4E97-9CE4-EC818B5EF115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1D23DD-92CB-4E97-9CE4-EC818B5EF115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1D23DD-92CB-4E97-9CE4-EC818B5EF115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +99,7 @@ Global
 		{1DDC928B-C103-4155-8D9A-7516C61FBEB1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E7901C1B-C2B2-41F5-AE4B-D0F7A826FE48} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E711EA9D-F008-4E4E-AAA9-03F6403A61C1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{AD1D23DD-92CB-4E97-9CE4-EC818B5EF115} = {681045CC-177A-41ED-BFAA-5DC1D5FB8566}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47F57462-0D42-4A9B-9D9A-1A0640BD6135}
