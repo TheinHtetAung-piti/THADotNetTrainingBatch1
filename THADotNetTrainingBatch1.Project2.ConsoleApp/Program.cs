@@ -9,7 +9,7 @@ Console.WriteLine("Hello, World!");
 string jsonStr = File.ReadAllText("DreamDictionary.json");
 var model = JsonConvert.DeserializeObject<DreamDictionaryResopnseModel>(jsonStr);
 
-var lst = model!.BlogHeader.Where(x => x.BlogId > 1).ToList();
+var lst = model!.BlogHeader.ToList();
 var lst1 = model.BlogDetail.ToList();
 
 foreach (var item in lst)

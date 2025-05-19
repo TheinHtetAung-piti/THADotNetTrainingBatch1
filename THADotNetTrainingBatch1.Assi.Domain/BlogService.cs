@@ -22,13 +22,13 @@ namespace THADotNetTrainingBatch1.Assi.Domain
         {
             try
             {
-                var lst = _appDbContext.TblBlogHeaders
+                var lstHedaer = _appDbContext.TblBlogHeaders
                             .Where(x => x.BlogId == letterCode)
                             .ToList();
-                var lst1 = _appDbContext.TblBlogDetails
+                var lstDetails = _appDbContext.TblBlogDetails
                             .Where(x => x.BlogId == letterCode)
                             .ToList();
-                return new ResponseModel(true, "Success", lst, lst1);
+                return new ResponseModel(true, "Success", lstHedaer, lstDetails);
             }
             catch (Exception ex)
             {
