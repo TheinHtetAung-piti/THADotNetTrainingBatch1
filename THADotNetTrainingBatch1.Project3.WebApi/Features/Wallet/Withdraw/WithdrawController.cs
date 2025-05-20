@@ -2,13 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using THADotNetTrainingBatch1.Project3.Database.Models;
 using THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.Deposit;
-using static THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.RegisterWallet.RegisterWalletController;
 
 namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.Withdraw
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WithdrawController : ControllerBase
+    public partial class WithdrawController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
         private readonly decimal _minimunAmount;
@@ -87,20 +86,6 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.Withdraw
 
         Result:
             return Ok(model);
-        }
-
-        public class WithdrawRequestModel()
-        {
-            public string MobileNo { get; set; }    
-            public decimal Amount { get; set; } 
-
-        }
-
-        public class WithdrawResponseModel : ResponseModel
-        {
-            public decimal OldBalance { get; set; } 
-
-            public decimal NewBalance { get; set; } 
         }
     }
 
