@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using THADotNetTrainingBatch1.Project3.Database.Models;
-using static THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.RegisterWallet.RegisterWalletController;
 
 namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.CheckBalance
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CheckBalanceController : ControllerBase
+    public partial class CheckBalanceController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
 
@@ -51,18 +50,6 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.CheckBalance
             };
         Result:
             return Ok(model);
-        }
-
-        public class BalanceRequestModel()
-        {
-            public string MobileNo { get; set; }
-        }
-
-        public class BalanceResponseModel() : ResponseModel
-        {
-            public string MobileNo { get; set; }
-
-            public decimal Balance { get; set; }
         }
     }
 }
