@@ -39,6 +39,24 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.CheckBalance
                 goto Result;
             }
 
+            var lst = _appDbContext.TblTranscations.Where(x => 
+            (
+                  x.FromMobileNo == requestModel.MobileNo
+                 || x.ToMobileNo == requestModel.MobileNo)
+             )
+                .OrderByDescending(x => x.TransctationDate)
+                .Take(5)
+                .ToList();
+
+            var transcationHistoryList = lst.Select(x => new TranscationHistoryResoponseModel
+            {
+                FromMobileNo = x.FromMobileNo , 
+                ToMobileNo = x.ToMobileNo , 
+                Amount = x.Amount ,
+                TransctationDate = x.TransctationDate ,
+            }).ToList();
+
+
             decimal balance = itemWallet.Balance;
 
             model = new BalanceResponseModel
@@ -46,7 +64,8 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.CheckBalance
                 IsSuccess = true,
                 MobileNo = requestModel.MobileNo,
                 Balance = balance,
-                Message = $"Total Balance is {balance}"
+                Message = $"Total Balance is {balance}",
+                TranscationHistoryList = transcationHistoryList
             };
         Result:
             return Ok(model);
