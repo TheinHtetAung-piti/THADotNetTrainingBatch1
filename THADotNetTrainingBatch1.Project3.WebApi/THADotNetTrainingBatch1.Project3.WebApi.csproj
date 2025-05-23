@@ -14,8 +14,4 @@
     <ProjectReference Include="..\THADotNetTrainingBatch1.Project3.Database\THADotNetTrainingBatch1.Project3.Database.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Wallet\NewFolder\" />
-  </ItemGroup>
-
 </Project>
