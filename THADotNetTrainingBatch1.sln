@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.Project3.Database", "THADotNetTrainingBatch1.Project3.Database\THADotNetTrainingBatch1.Project3.Database.csproj", "{F92E8EF0-A9B3-4E0E-BE16-614C9DC68C51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THADotNetTrainingBatch1.MinimalApi", "THADotNetTrainingBatch1.MinimalApi\THADotNetTrainingBatch1.MinimalApi.csproj", "{6E106E80-0485-4C2C-8F85-725791F2E4C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{F92E8EF0-A9B3-4E0E-BE16-614C9DC68C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F92E8EF0-A9B3-4E0E-BE16-614C9DC68C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F92E8EF0-A9B3-4E0E-BE16-614C9DC68C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E106E80-0485-4C2C-8F85-725791F2E4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E106E80-0485-4C2C-8F85-725791F2E4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E106E80-0485-4C2C-8F85-725791F2E4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E106E80-0485-4C2C-8F85-725791F2E4C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
