@@ -45,6 +45,14 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.Transcation
                 goto Result;
             }
 
+            if (requestModel.FromMobileNo == requestModel.ToMobileNo)
+            {
+                model = new TranscationResponseModel
+                {
+                    Message = "From and To MobileNo Can't be same"
+                };
+                goto Result;
+            }
             if(requestModel.Amount <= 0)
             {
                 model = new TranscationResponseModel
@@ -79,7 +87,7 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.Transcation
             {
                 model = new TranscationResponseModel
                 {
-                    Message = "Not enough Balance"
+                    Message = "Insufficient Amount"
                 };
                 goto Result;
             }
@@ -93,9 +101,10 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.Transcation
                 FromMobileNo = requestModel.FromMobileNo,
                 Amount = requestModel.Amount,
                 TransctationDate = DateTime.Now,
-                TranscationId = Guid.NewGuid().ToString(),
-                //TranscationNo = 
+                TranscationNo = DateTime.Now.ToString("yyyyMMdd_hhmmss_fff"),
+                TranscationId = Ulid.NewUlid().ToString()
             });
+            _appDbContext.SaveChanges();
             model = new TranscationResponseModel
             {
                 IsSuccess = true,

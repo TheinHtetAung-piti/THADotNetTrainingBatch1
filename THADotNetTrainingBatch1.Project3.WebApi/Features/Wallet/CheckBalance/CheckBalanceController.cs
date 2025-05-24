@@ -50,6 +50,8 @@ namespace THADotNetTrainingBatch1.Project3.WebApi.Features.Wallet.CheckBalance
 
             var transcationHistoryList = lst.Select(x => new TranscationHistoryResoponseModel
             {
+                TranscationId = x.TranscationId,
+                TranscationNo = x.TranscationNo,
                 FromMobileNo = x.FromMobileNo , 
                 ToMobileNo = x.ToMobileNo , 
                 Amount = x.Amount ,

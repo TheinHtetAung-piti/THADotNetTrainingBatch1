@@ -29,18 +29,18 @@ public partial class AppDbContext : DbContext
     {
         modelBuilder.Entity<TblTranscation>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_Transcation");
+            entity.HasKey(e => e.TranscationId);
 
+            entity.ToTable("Tbl_Transcation");
+
+            entity.Property(e => e.TranscationId)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Amount).HasColumnType("decimal(20, 2)");
             entity.Property(e => e.FromMobileNo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.ToMobileNo)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.TranscationId)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.TranscationNo)
