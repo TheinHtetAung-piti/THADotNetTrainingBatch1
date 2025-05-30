@@ -1,10 +1,12 @@
 ﻿@model List<WalletModel>
 
 @{
-	int count = 0; 
+	int count = 0;
+	ViewData["Title"] = "Wallet User";
 }
-<h1>Blog Index @Model.Count</h1>
+<h1>Wallet Users - @Model.Count</h1>
 
+<a class="btn btn-outline-success" href="/Wallet/Create/"> Create </a>
 <table class="table table-responsive"> 
 	<thead>
 		<tr> 
