@@ -38,28 +38,32 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
         {
             bool isSuccess = false;
             string message;
-            //if(requestModel.WalletUserName.IsNullOrEmptyV3())
-            //{
-            //    message = "need to fill WalletUserName";
-                
-            //}
+            if (requestModel.WalletUserName.IsNullOrEmptyV2())
+            {
+                message = "need to fill WalletUserName";
+                goto End;
 
-            //if(requestModel.FullName.IsNullOrEmptyV3())
-            //{
-            //    message = "need to fill Full Name";
-            //}
+            }
 
-            //if(requestModel.MobileNo.IsNullOrEmptyV3() )
-            //{
-            //    message = "need to fill MobileNo";
-            //}
+            if (requestModel.FullName.IsNullOrEmptyV2())
+            {
+                message = "need to fill Full Name";
+                goto End;
+            }
 
-            //if(requestModel.Balance <= 0 )
-            //{
-            //    message = "YOur amount is invalid";
-            //}
+            if (requestModel.MobileNo.IsNullOrEmptyV2())
+            {
+                message = "need to fill MobileNo";
+                goto End;
+            }
 
+            if (requestModel.Balance <= 0)
+            {
+                message = "YOur amount is invalid";
+                goto End;
+            }
 
+            string getQuery = "select * from Tbl_Wallet";
             string query = @"INSERT INTO [dbo].[Tbl_Wallet]
            ([WalletUserName]
            ,[FullName]
@@ -70,14 +74,34 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
            ,@FullName
            ,@MobileNo
            ,@Balance)";
-            using IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
-            db.Open();
-            var result = await db.ExecuteAsync(query, requestModel);
+            using (IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString))
+            {
+                
+                db.Open();
+                var data = await db.QueryAsync<WalletModel>(getQuery);
 
-            isSuccess = result > 0;
-            message = isSuccess ? "Success" : "Fail";
+                var check = data.FirstOrDefault(x => x.WalletUserName == requestModel.WalletUserName);
+                if (check != null)
+                {
+                    message = "UserName already exist";
+                    goto End;
+                }
 
-            
+                check = data.FirstOrDefault(x => x.MobileNo == requestModel.MobileNo);
+                if(check != null)
+                {
+                    message = "Mobile NO already exist";
+                    goto End;
+                }
+                
+                var result = await db.ExecuteAsync(query, requestModel);
+
+                isSuccess = result > 0;
+                message = isSuccess ? "Success" : "Fail";
+            }
+          
+
+        End:
             TempData["IsSuccess"] = isSuccess;
             TempData["Message"] = message;
 

@@ -14,9 +14,6 @@ namespace THADotNetTrainingBatch1.Shared
             return str != null && !string.IsNullOrEmpty(str.Trim());
         }
 
-        public static bool IsNullOrEmptyV3(this string? str)
-        {
-            return str == null && string.IsNullOrEmpty(str.Trim());
-        }
+       
     }
 }
