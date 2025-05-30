@@ -1,7 +1,16 @@
 ﻿@{
 	ViewData["Title"] = "New Wallet";
+    bool isSuccess = Convert.ToBoolean(TempData["IsSuccess"] ?? false);
+    string message = Convert.ToString(TempData["Message"] ?? string.Empty);
 }
 <h1>New Wallet</h1>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-@(isSuccess ? "success" : "Danger")" role="alert">
+        @message
+    </div>
+}
 
 <form method="post" action="/Wallet/Create">
     <div class="mb-3">
@@ -24,6 +33,6 @@
     </div>
     <div class="right">
         <button type="button" class="btn btn-secondary">Cancel</button>
-        <button type="button" class="btn btn-success" id="btnSave">Save</button>
+        <button type="submit" class="btn btn-success" id="btnSave">Save</button>
     </div>
 </form>

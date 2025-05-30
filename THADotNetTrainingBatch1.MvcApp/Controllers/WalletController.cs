@@ -36,8 +36,30 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
         [ActionName("Create")]
         public async Task<IActionResult> WalletCreateAsync(WalletModel requestModel )
         {
+            bool isSuccess = false;
+            string message;
+            //if(requestModel.WalletUserName.IsNullOrEmptyV3())
+            //{
+            //    message = "need to fill WalletUserName";
+                
+            //}
 
-          
+            //if(requestModel.FullName.IsNullOrEmptyV3())
+            //{
+            //    message = "need to fill Full Name";
+            //}
+
+            //if(requestModel.MobileNo.IsNullOrEmptyV3() )
+            //{
+            //    message = "need to fill MobileNo";
+            //}
+
+            //if(requestModel.Balance <= 0 )
+            //{
+            //    message = "YOur amount is invalid";
+            //}
+
+
             string query = @"INSERT INTO [dbo].[Tbl_Wallet]
            ([WalletUserName]
            ,[FullName]
@@ -52,13 +74,14 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
             db.Open();
             var result = await db.ExecuteAsync(query, requestModel);
 
-            bool isSuccess = result > 0;
-            string message = isSuccess ? "Success" : "Fail";
+            isSuccess = result > 0;
+            message = isSuccess ? "Success" : "Fail";
 
+            
             TempData["IsSuccess"] = isSuccess;
             TempData["Message"] = message;
 
-            return RedirectToAction("WalletCreate");
+            return RedirectToAction("Index");
         }
 
 

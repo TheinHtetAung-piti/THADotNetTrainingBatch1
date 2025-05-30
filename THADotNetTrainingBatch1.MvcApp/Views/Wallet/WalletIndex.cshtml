@@ -8,10 +8,10 @@
 }
 <h1>Wallet Users - @Model.Count</h1>
 
-@if(string.IsNullOrEmpty(message))
+@if(!string.IsNullOrEmpty(message))
 {
 	<div class="alert alert-@(isSuccess ? "success" : "Danger")" role="alert">
-		A simple success alert—check it out!
+		@message
 	</div>
 }
 
