@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -108,10 +109,50 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        [ActionName("Edit")]
+        public async Task<IActionResult> WalletEditAsync(int id)
+        {
+            using IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+            db.Open();
+            string query = @"SELECT [WalletId]
+      ,[WalletUserName]
+      ,[FullName]
+      ,[MobileNo]
+      ,[Balance]
+  FROM [dbo].[Tbl_Wallet]
+  where WalletId  = @WalletId";
+            var model = await db.QueryFirstOrDefaultAsync<WalletModel>(query, new
+            {
+                WalletId = id
+            });
+            if (model is null)
+            {
+                TempData["IsSuccess"] = false;
+                TempData["Message"] = "No data found";
+                RedirectToAction("WalletEdit", model);
+            }
+            return View("WalletEdit", model );
+        }
+
+        public async Task<IActionResult> WalletUpdate(int id,WalletModel requestModel)
+        {
+            using IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+            db.Open();
+            string query = @"";
+
+            var result = await db.ExecuteAsync(query, requestModel);
+            bool isSuccess = result > 0;
+            string message = isSuccess ? "Success" : "fail";
+
+            TempData["IsSuccess"] = isSuccess;
+            TempData["Message"] = message;
+            return RedirectToAction("Index");
+        }
 
         public class WalletModel()
         {
-
+            public int WalletId { get; set; }
             public string WalletUserName {  get; set; } 
 
             public string FullName { get; set; }    
