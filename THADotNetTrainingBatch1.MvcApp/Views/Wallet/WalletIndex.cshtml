@@ -3,8 +3,18 @@
 @{
 	int count = 0;
 	ViewData["Title"] = "Wallet User";
+	bool isSuccess = Convert.ToBoolean(TempData["IsSuccess"] ?? false);
+	string message = Convert.ToString(TempData["Message"] ?? string.Empty);
 }
 <h1>Wallet Users - @Model.Count</h1>
+
+@if(string.IsNullOrEmpty(message))
+{
+	<div class="alert alert-@(isSuccess ? "success" : "Danger")" role="alert">
+		A simple success alert—check it out!
+	</div>
+}
+
 
 <a class="btn btn-outline-success" href="/Wallet/Create/"> Create </a>
 <table class="table table-responsive"> 
