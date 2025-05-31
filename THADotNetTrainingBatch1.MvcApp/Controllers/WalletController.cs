@@ -130,7 +130,7 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
             {
                 TempData["IsSuccess"] = false;
                 TempData["Message"] = "No data found";
-                RedirectToAction("WalletEdit", model);
+                RedirectToAction("Index");
             }
             return View("WalletEdit", model);
         }
@@ -201,6 +201,49 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        [ActionName("Delete")]
+        public async Task<IActionResult> WalletDeleteAsync(int id)
+        {
+          
+            using IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+            db.Open();
+            string query = @"SELECT [WalletId]
+      ,[WalletUserName]
+      ,[FullName]
+      ,[MobileNo]
+      ,[Balance]
+  FROM [dbo].[Tbl_Wallet]
+  where WalletId  = @WalletId";
+            var model = await db.QueryFirstOrDefaultAsync<WalletModel>(query, new
+            {
+                WalletId = id
+            });
+            if (model is null)
+            {
+                TempData["IsSuccess"] = false;
+                TempData["Message"] = "No data found";
+                RedirectToAction("Index");
+            }
+            string deleteQuery = @"DELETE FROM [dbo].[Tbl_Wallet]    
+                                    WHERE WalletId = @WalletId";
+
+            int result = await db.ExecuteAsync(deleteQuery, new 
+            {
+                WalletId = id
+            });
+
+            if(result == 0 )
+            {
+                TempData["IsSuccess"] = false;
+                TempData["Message"] = "No data found";
+                RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+     
+
         public class WalletModel()
         {
             public int WalletId { get; set; }
@@ -212,6 +255,21 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
             public decimal Balance { get; set; }
 
             public string MobileNo { get; set; }    
+        }
+
+        public class TranscationModel()
+        {
+            public string TranscationId { get; set; } = null!;
+
+            public string TranscationNo { get; set; } = null!;
+
+            public string FromMobileNo { get; set; } = null!;
+
+            public string ToMobileNo { get; set; } = null!;
+
+            public decimal Amount { get; set; }
+
+            public DateTime TransctationDate { get; set; }
         }
     }
 }
