@@ -27,16 +27,26 @@ namespace THADotNetTrainingBatch1.MvcApp.Controllers
             var lst = await db.QueryAsync<WalletModel>("select * from Tbl_Wallet");
             return View("WalletIndex", lst.ToList());
         }
-        [HttpPost]
-        [ActionName("HistroyIndex")]
-        public async Task<IActionResult> WalletHistoryIndex()
-        {
 
+        [ActionName("HistoryIndex")]
+        public async Task<IActionResult> WalletHistroyIndex()
+        {
             using IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
             db.Open();
-            var lst = await db.QueryAsync<WalletModel>("select * from Tbl_Transcation");
-            return View("HistroyIndex", lst.ToList());
+            var lst = await db.QueryAsync<TranscationModel>("select * from Tbl_Transcation");
+            return View("HistoryIndex" , lst.ToList());
         }
+
+        //[HttpPost]
+        //[ActionName("HistroyIndex")]
+        //public async Task<IActionResult> WalletHistoryIndex()
+        //{
+
+        //    using IDbConnection db = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+        //    db.Open();
+        //    var lst = await db.QueryAsync<TranscationModel>("select * from Tbl_Transcation");
+        //    return View("HistroyIndex", lst.ToList());
+        //}
         //[HttpGet]
         //[ActionName("HistroyIndex")]
         //public async Task<IActionResult> WalletHistoryIndex()
