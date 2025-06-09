@@ -13,7 +13,14 @@ namespace THADotNetTrainingBatch1.MvcApp2.Controllers
         [ActionName("Index")]
         public IActionResult WalletIndex()
         {
-            return View();
+            return View("WalletIndex");
+        }
+
+        [HttpPost]
+        [ActionName("Index")]
+        public IActionResult WalletList()
+        {
+            return Json(new { Message = "Hehehhehhe" });
         }
     }
 }

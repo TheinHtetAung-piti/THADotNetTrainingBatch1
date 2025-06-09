@@ -13,7 +13,26 @@
 			<th>Mobile No</th>
 		</tr>
 	</thead>
-	<tbody id="tbDataTable">
-		
+	<tbody id="tbDataTable">	
 	</tbody>
 </table>
+
+@section scripts
+{
+	<script>
+		function loadData(){
+			$.ajax({
+				url : "Wallet/Index",
+				typeof : "POST",
+				success : function (response){
+					console.log({response});
+				},
+				error : function(request,status , error){
+					alert(request.responseText);
+				}
+			});
+
+			//09754975593
+		}
+	</script>
+}
